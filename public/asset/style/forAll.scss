@@ -1,0 +1,72 @@
+$color-nav: #1a1d28;
+$primary-color: #ededed;
+$primary-background: #13141b;
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.login-regis {
+    width: 500px;
+    background-color: $primary-background;
+    height: 100vh;
+}
+
+.box-login {
+    margin: auto;
+    width: 440px;
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.8);
+    background-color: #f2f2f2;
+}
+
+.name-page {
+    padding: 150px 0 50px 0;
+    color: $primary-color;
+}
+
+.line-seperate {
+    background-color: #ccc;
+    height: 1px;
+}
+
+.regis {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.box-regis {
+    margin: auto;
+    width: 500px;
+    box-shadow: 0 0 10px rgba(225, 225, 225, 0.8);
+    background-color: #f2f2f2;
+    margin-top: 250px;
+}
+
+.regis {
+    display: none;
+}
+
+.appear-regis .regis {
+    display: block;
+}
+
+.box-regis {
+    animation: scaleLarger linear 0.2s;
+}
+
+@keyframes scaleLarger {
+    from{
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

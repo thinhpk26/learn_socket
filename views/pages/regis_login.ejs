@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regis Login</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href='/public/asset/style/forAll.css'>
+<link href='/public/asset/style/forAll.scss'>
+<style>
+    :root {
+        --color-nav: #1a1d28;
+        --primary-color: #ededed;
+        --primary-background: #13141b;
+    }
+    body {
+        font-family:Arial, Helvetica, sans-serif;
+        display: flex;
+        justify-content: center;
+    }
+
+    .login-regis {
+        width: 500px;
+        background-color: var(--primary-color);
+        height: 100vh;
+    }
+
+    .box-login {
+        margin: auto;
+        width: 440px;
+        box-shadow: 0 0 10px rgba(225, 225, 225, 0.8);
+        background-color: #f2f2f2;
+    }
+
+    .name-page {
+        padding: 150px 0 50px 0;
+        color: var(--primary-background);
+    }
+
+    .line-seperate {
+        background-color: #ccc;
+        height: 1px;
+    }
+
+    .regis {
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .box-regis {
+        margin: auto;
+        width: 500px;
+        box-shadow: 0 0 10px rgba(225, 225, 225, 0.8);
+        background-color: #f2f2f2;
+        margin-top: 250px;
+    }
+
+    .regis {
+        display: none;
+    }
+
+    .appear-regis .regis {
+        display: block;
+    }
+
+    .box-regis {
+        animation: scaleLarger linear 0.2s;
+    }
+
+    @keyframes scaleLarger {
+        from{
+            transform: scale(0.8);
+            opacity: 0.5;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>
+<body>
+    <section class="login-regis">
+        <header class="name-page">
+            <p class="display-6 text-center fw-bold m-0">Chat room</p>
+        </header>
+        <main class="login">
+            <div class="box-login border rounded">
+                <form class="form-login mx-3 my-3 d-flex flex-column justify-content-center">
+                    <div class="mb-3">
+                        <label htmlFor="email-login" class="form-label">Email</label>
+                        <input type="email" class="form-control form-control-lg" id="email-login" name='email_login' placeholder="Email của bạn vd: 123@gmail.com"></input>
+                        <div id="email-login" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label htmlFor="pass-login" class="form-label">Password</label>
+                        <input type="password" class="form-control form-control-lg" name='password_login' placeholder='vd: 123...' id="pass-login"></input>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember-pass"></input>
+                        <label class="form-check-label" htmlFor="remember-pass"><small>Remember password</small></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary fw-bold btn-lg" onclick='submitLogin()'>Đăng nhập</button>
+                </form>
+                <div class="line-seperate mx-3 my-4"></div>
+                <div class="mx-3 mb-3">
+                    <button class="btn btn-success fw-bold w-100 btn-lg" onclick='appearRegis()'>Đăng kí ngay</button>
+                </div>
+            </form>
+        </main>
+        <section class="regis">
+            <div class='box-regis rounded'>
+                <div class="name-regis mx-2 d-flex justify-content-between align-items-center">
+                    <h3 class="fw-bold my-3">Đăng kí</h3>
+                    <button type="button" class="btn-close" aria-label="Close" onclick='closeRegis()'></button>
+                </div>
+                <form class="form-regis mx-2 pb-2 row g-3 needs-validation" novalidate>
+                    <div class="col-12 position-relative">
+                      <label for="validationTooltip01" class="form-label">Tên đăng nhập</label>
+                      <input type="text" class="form-control" id="validationTooltip01" placeholder="VD: thịnh" required>
+                    </div>
+                    <div class="col-12 position-relative">
+                      <label for="validationTooltipUsername" class="form-label">Tài khoản</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                        <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                        <div class="invalid-tooltip">
+                          Hãy chọn tên là duy nhất.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 position-relative">
+                      <label for="validationTooltip02" class="form-label">Mật khẩu</label>
+                      <input type="text" class="form-control" id="validationTooltip02" placeholder="VD: son98765" required>
+                      <div class="invalid-tooltip">
+                        Hãy điền mật khẩu.
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit" onclick="submitRegis()">Đăng kí</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </section>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src='../../public/regis_login.js'></script>
+</html>

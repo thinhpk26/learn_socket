@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        const roomID = "<%= roomID %>"
+    </script>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .color-white{ color: #fff}
+        .mx-3{margin-left: 16px; margin-right: 16px;}
+        .m-0 {margin: 0}
+        .p-0{padding: 0;}
+        .text-center{text-align: center;}
+        li{list-style: none;}
+
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; display: flex}
+        header {display: flex; flex-direction: column; align-items: center;}
+        nav.navbar {width: 300px; background-color: rgb(64, 1, 77); height: 100vh}
+        .user-into-room-item {display: flex; align-items: center;}
+        .active-or-not {display: flex; align-items: center;}
+
+        main.main {flex: 1; height: 100vh; position: relative;}
+        .description {display: flex; width: 100%; flex-direction: column; align-items: center;}
+        .roomId,.userId {display: block;}
+        #container-list-msg {display: grid; grid-template-columns: auto auto; grid-column-gap: 16px; margin-bottom: 28px; padding-left: 8px;}
+        
+        /* những room message */
+        .item-msg {position: relative; height: 700px; list-style-type: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-radius: 8px; border: #ccc solid 0.5px; overflow: auto;}
+        .message-list {margin: 0; padding: 0; height: 100%}
+        .message-list > li {padding: 0.5rem 1rem; list-style: none;}
+        .message-list > li:nth-child(odd) { background: #efefef; }
+        h4 {align-self: center;}
+
+        .section-chat {display: flex;}
+        .form-message{ background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: sticky; bottom: 0; left: 0; right: 0; box-sizing: border-box; backdrop-filter: blur(10px)}
+        .input-chat {height: 2rem; border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; flex: 1; font-size: 20px}
+        form button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; cursor: pointer;}
+
+        /* phần tạo room */
+        .section-create-room {display: flex; align-items: center; height: 2.5rem}
+        #create-small-room { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: sticky; bottom: 0; left: 0; right: 0; box-sizing: border-box; backdrop-filter: blur(10px)}
+        #input-create-room {flex: 1; font-size: 20px; height: 2rem;}
+        button.btn-create-room {background-color: rgb(64, 1, 77); height: 2rem; border-radius: 8px;}
+        .span-server-send {color: red}
+        .fa-circle, .fa-dot-circle {display: none}
+        .active .fa-dot-circle {
+            color: green;
+            display: block;
+        }
+        .no-active .fa-circle {
+            color: red;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h4 class='color-white text-center'>Người dùng hiện tại</h4>
+        <ul class='user-into-room m-0 p-0'></ul>
+    </nav>
+    <main class="main">
+        <header>
+            <div class='description'>
+                <span class="roomId"></span>
+                <span class="host"></span>
+            </div>
+        </header>
+        <ul id="container-list-msg">
+            <li class="item-msg" data-name-room='sitting-room'>
+                <h4>Sitting room</h4>
+                <ul class="message-list" data-name-room='sitting-room'></ul>
+                <form class="form-message">
+                    <div class='section-chat'>
+                        <input class="input-chat" autocomplete="off"/>
+                        <button class="btn-chat">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+        <form id="create-small-room">
+            <div class='server-return'></div>
+            <div class='section-create-room'>
+                <input id="input-create-room" autocomplete="off" />
+                <button class="btn-create-room">
+                    Create Small Room
+                </button>
+            </div>
+        </form>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <script src="../socket.io/socket.io.js"></script>
+    <script src="../../public/userClass.js"></script>
+    <script type="module" src="../../public/index.js"></script>
+</body>
+</html>

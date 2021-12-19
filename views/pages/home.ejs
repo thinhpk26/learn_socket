@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif}
+        .container-input {
+            display: flex;
+        }
+        input { border: solid 0.5px #ccc; padding: 0.5rem 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; font-size: 20px;}
+        input:focus { outline: none; }
+        button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="input-create-nameuser">
+            <h4>Tạo tên mới</h4>
+        </label>
+        <div class="container-input">
+            <input type="text" id='input-create-nameuser' class="input-create-room">
+            <button class='button-create-room'>Tạo room mới</button>
+        </div>
+    </div>
+    <div class="container">
+        <label for="input-into-room">
+            <h4>Nhập ID room bạn muốn vào</h4>
+        </label>
+        <div class="container-input">
+            <input type="text" id='input-into-room' class="input-into-room">
+            <button class='button-into-room'>Vào room</button>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+<script src="socket.io/socket.io.js"></script>
+<script src='../../public/home.js'>
+
+</script>
+</html>
